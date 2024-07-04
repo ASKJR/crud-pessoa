@@ -1,0 +1,24 @@
+<div class="conteiner-fluid">
+  <nav class="navbar navbar-default">
+    <div class="conteiner-fluid">
+      <a class="navbar-brand" href="#"> Pessoas </a>
+    </div>
+    <div class="conteiner-fluid">
+      <a class="navbar-brand" href="#" [routerLink]="['/enderecos/listar']">
+        Endereço
+      </a>
+    </div>
+    <div class="conteiner-fluid">
+      <a class="navbar-brand" href="#" [routerLink]="['/cidades/listar']">
+        Cidade
+      </a>
+    </div>
+    <div class="conteiner-fluid">
+      <a class="navbar-brand" href="#" [routerLink]="['/estados/listar']">
+        Estado
+      </a>
+    </div>
+  </nav>
+
+  <router-outlet></router-outlet>
+</div>

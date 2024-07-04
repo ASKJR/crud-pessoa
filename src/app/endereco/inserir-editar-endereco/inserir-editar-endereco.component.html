@@ -1,0 +1,153 @@
+<h1>{{ isEdit ? "Editar" : "Novo" }} Endereço</h1>
+<div class="well">
+  <form #formEndereco="ngForm">
+    <div class="form-group">
+      <label for="nome">Rua:</label>
+      <input
+        type="text"
+        class="form-control"
+        id="rua"
+        name="rua"
+        minlength="2"
+        required
+        [(ngModel)]="endereco.rua"
+        #rua="ngModel"
+      />
+
+      <div
+        class="alert alert-danger"
+        *ngIf="rua.errors && (rua.dirty || rua.touched)"
+      >
+        <div [hidden]="!rua.errors['required']">Digite o nome da rua.</div>
+        <div [hidden]="!rua.errors['minlength']">
+          O nome da rua deve conter ao menos 2 caracteres.
+        </div>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="nome">Numero:</label>
+      <input
+        type="number"
+        class="form-control"
+        id="numero"
+        name="numero"
+        minlength="2"
+        required
+        [(ngModel)]="endereco.numero"
+        #numero="ngModel"
+      />
+
+      <div
+        class="alert alert-danger"
+        *ngIf="numero.errors && (numero.dirty || numero.touched)"
+      >
+        <div [hidden]="!numero.errors['required']">Digite o número da rua.</div>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="nome">Complemento:</label>
+      <input
+        type="text"
+        class="form-control"
+        id="complemento"
+        name="complemento"
+        [(ngModel)]="endereco.complemento"
+        #complemento="ngModel"
+      />
+    </div>
+    <div class="form-group">
+      <label for="nome">Bairro:</label>
+      <input
+        type="text"
+        class="form-control"
+        id="bairro"
+        name="bairro"
+        minlength="2"
+        required
+        [(ngModel)]="endereco.bairro"
+        #bairro="ngModel"
+      />
+
+      <div
+        class="alert alert-danger"
+        *ngIf="bairro.errors && (bairro.dirty || bairro.touched)"
+      >
+        <div [hidden]="!bairro.errors['required']">Digite o bairro da rua.</div>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="nome">Cep:</label>
+      <input
+        type="text"
+        class="form-control"
+        id="cep"
+        name="cep"
+        minlength="2"
+        required
+        [(ngModel)]="endereco.cep"
+        #cep="ngModel"
+      />
+
+      <div
+        class="alert alert-danger"
+        *ngIf="cep.errors && (cep.dirty || cep.touched)"
+      >
+        <div [hidden]="!cep.errors['required']">Digite o cep da rua.</div>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="nome">Cidade:</label>
+      <input
+        type="text"
+        class="form-control"
+        id="cidade"
+        name="cidade"
+        minlength="2"
+        required
+        [(ngModel)]="endereco.cidade"
+        #cidade="ngModel"
+      />
+
+      <div
+        class="alert alert-danger"
+        *ngIf="cidade.errors && (cidade.dirty || cidade.touched)"
+      >
+        <div [hidden]="!cidade.errors['required']">Digite a cidade.</div>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="nome">Estado:</label>
+      <input
+        type="text"
+        class="form-control"
+        id="estado"
+        name="estado"
+        minlength="2"
+        required
+        [(ngModel)]="endereco.estado"
+        #estado="ngModel"
+      />
+
+      <div
+        class="alert alert-danger"
+        *ngIf="estado.errors && (estado.dirty || estado.touched)"
+      >
+        <div [hidden]="!estado.errors['required']">Digite o estado.</div>
+      </div>
+    </div>
+    <div class="form-group">
+      <button
+        type="button"
+        class="btn btn-primary"
+        (click)="handleClik()"
+        [disabled]="!formEndereco.form.valid"
+      >
+        <i class="fa fa-save" aria-hidden="true"></i>
+        {{ isEdit ? "Atualizar" : "Salvar" }}
+      </button>
+      <a [routerLink]="['/enderecos']" class="btn btn-secondary">
+        <i class="fa fa-arrow-left" aria-hidden="true"></i> Voltar
+      </a>
+    </div>
+  </form>
+</div>

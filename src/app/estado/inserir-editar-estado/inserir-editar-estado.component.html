@@ -1,0 +1,65 @@
+<h1>{{ isEdit ? "Editar" : "Novo" }} Estado</h1>
+<div class="well">
+  <form #formEstado="ngForm">
+    <div class="form-group">
+      <label for="nome">Nome:</label>
+      <input
+        type="text"
+        class="form-control"
+        id="nome"
+        name="nome"
+        minlength="2"
+        required
+        [(ngModel)]="estado.nome"
+        #nome="ngModel"
+      />
+      <div
+        class="alert alert-danger"
+        *ngIf="nome.errors && (nome.dirty || nome.touched)"
+      >
+        <div [hidden]="!nome.errors['required']">Digite o nome da cidade.</div>
+        <div [hidden]="!nome.errors['minlength']">
+          O nome da cidade deve conter ao menos 2 caracteres.
+        </div>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="nome">Sigla:</label>
+      <input
+        type="text"
+        class="form-control"
+        id="sigla"
+        name="sigla"
+        minlength="2"
+        maxlength="2"
+        required
+        [(ngModel)]="estado.sigla"
+        #sigla="ngModel"
+      />
+      <div
+        class="alert alert-danger"
+        *ngIf="sigla.errors && (sigla.dirty || sigla.touched)"
+      >
+        <div [hidden]="!sigla.errors['required']">Digite o nome do estado.</div>
+        <div [hidden]="!sigla.errors['minlength']">
+          O nome do estado deve conter ao menos 2 caracteres.
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <button
+        type="button"
+        class="btn btn-primary"
+        (click)="handleClik()"
+        [disabled]="!formEstado.form.valid"
+      >
+        <i class="fa fa-save" aria-hidden="true"></i>
+        {{ isEdit ? "Atualizar" : "Salvar" }}
+      </button>
+      <a [routerLink]="['/estados']" class="btn btn-secondary">
+        <i class="fa fa-arrow-left" aria-hidden="true"></i> Voltar
+      </a>
+    </div>
+  </form>
+</div>
