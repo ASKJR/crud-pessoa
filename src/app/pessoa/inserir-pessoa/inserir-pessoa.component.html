@@ -26,12 +26,13 @@
     <div class="form-group">
       <label for="idade">Idade:</label>
       <input
-        type="number"
+        type="text"
         class="form-control"
         id="idade"
         name="idade"
         [(ngModel)]="pessoa.idade"
         #idade="ngModel"
+        numerico
         required
       />
       <div
