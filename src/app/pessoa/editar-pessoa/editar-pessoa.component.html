@@ -33,6 +33,8 @@
         [(ngModel)]="pessoa.idade"
         #idade="ngModel"
         numerico
+        minimo
+        valorMinimo="30"
         required
       />
       <div
@@ -41,6 +43,10 @@
       >
         <div [hidden]="!idade.errors['required']">
           Digite a idade da pessoa.
+        </div>
+        <div [hidden]="!idade.errors['minimo']">
+          A idade deve ser um número maior ou igual a
+          {{ idade.errors["requiredValue"] }}
         </div>
       </div>
     </div>

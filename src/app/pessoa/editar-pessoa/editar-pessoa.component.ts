@@ -7,7 +7,6 @@ import { NgForm } from '@angular/forms';
 @Component({
   selector: 'app-editar-pessoa',
   templateUrl: './editar-pessoa.component.html',
-  styleUrl: './editar-pessoa.component.css',
 })
 export class EditarPessoaComponent implements OnInit {
   @ViewChild('formPessoa') formPessoa!: NgForm;

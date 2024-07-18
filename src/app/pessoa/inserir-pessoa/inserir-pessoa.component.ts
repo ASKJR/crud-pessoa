@@ -7,7 +7,6 @@ import { NgForm } from '@angular/forms';
 @Component({
   selector: 'app-inserir-pessoa',
   templateUrl: './inserir-pessoa.component.html',
-  styleUrl: './inserir-pessoa.component.css',
 })
 export class InserirPessoaComponent {
   @ViewChild('formPessoa') formPessoa!: NgForm;
