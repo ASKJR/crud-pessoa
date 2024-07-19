@@ -19,7 +19,7 @@
       </th>
     </tr>
     <tr *ngFor="let pessoa of pessoas">
-      <td>{{ pessoa.nome }}</td>
+      <td>{{ pessoa.nome | caixaAlta }}</td>
       <td>{{ pessoa.idade }}</td>
       <td>{{ pessoa.dataNascimento }}</td>
       <td class="text-center" style="width: 300px">

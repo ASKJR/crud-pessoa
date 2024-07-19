@@ -8,6 +8,7 @@ import { InserirPessoaComponent } from './inserir-pessoa/inserir-pessoa.componen
 import { EditarPessoaComponent } from './editar-pessoa/editar-pessoa.component';
 import { NumericoDirective } from '../shared/directives/numerico.directive';
 import { MinimoValidatorDirective } from '../shared/directives/minimo-validator.directive';
+import { CaixaAltaPipe } from '../shared/pipes/caixa-alta.pipe';
 @NgModule({
   declarations: [
     ListarPessoaComponent,
@@ -15,6 +16,7 @@ import { MinimoValidatorDirective } from '../shared/directives/minimo-validator.
     EditarPessoaComponent,
     NumericoDirective,
     MinimoValidatorDirective,
+    CaixaAltaPipe,
   ],
   imports: [CommonModule, RouterModule, FormsModule],
   providers: [PessoaService],
