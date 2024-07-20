@@ -1,7 +1,8 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { Cidade } from '../../shared';
+import { Cidade, Estado } from '../../shared';
 import { CidadeService } from '../services/cidade.service';
+import { EstadoService } from '../../estado/services/estado.service';
 import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
@@ -12,14 +13,17 @@ import { ActivatedRoute, Router } from '@angular/router';
 export class InserirEditarCidadeComponent implements OnInit {
   @ViewChild('formCidade') formCidade!: NgForm;
   cidade: Cidade = new Cidade();
+  estados: Estado[] = [];
   isEdit: boolean = false;
 
   constructor(
     private cidadeService: CidadeService,
+    private estadoService: EstadoService,
     private router: Router,
     private activatedRoute: ActivatedRoute
   ) {}
   ngOnInit(): void {
+    this.estados = this.estadoService.listarTodos();
     const idParam = this.activatedRoute.snapshot.params['id'];
     if (idParam) {
       this.isEdit = true;

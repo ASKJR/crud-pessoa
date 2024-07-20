@@ -6,6 +6,7 @@
       <th>Nome</th>
       <th>Idade</th>
       <th>Nascimento</th>
+      <th>Cart. Motorista</th>
       <th class="text-center">
         <a
           [routerLink]="['/pessoas/novo']"
@@ -22,6 +23,7 @@
       <td>{{ pessoa.nome | caixaAlta }}</td>
       <td>{{ pessoa.idade }}</td>
       <td>{{ pessoa.dataNascimento }}</td>
+      <td>{{ pessoa.motorista! ? pessoa.motorista : "Não" }}</td>
       <td class="text-center" style="width: 300px">
         <button
           type="button"

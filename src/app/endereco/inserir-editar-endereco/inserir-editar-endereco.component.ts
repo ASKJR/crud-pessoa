@@ -43,6 +43,7 @@ export class InserirEditarEnderecoComponent {
   }
   inserir(): void {
     if (this.formEndereco.form.valid) {
+      console.log(this.endereco);
       this.enderecoService.inserir(this.endereco);
       this.router.navigate(['/enderecos']);
     }

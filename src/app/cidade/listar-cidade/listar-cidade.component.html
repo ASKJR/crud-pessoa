@@ -19,7 +19,7 @@
     </tr>
     <tr *ngFor="let cidade of cidades">
       <td>{{ cidade.nome }}</td>
-      <td>{{ cidade.estado }}</td>
+      <td>{{ cidade?.estado?.sigla }}</td>
       <td class="text-center" style="width: 300px">
         <a
           [routerLink]="['/cidades/editar', cidade.id]"

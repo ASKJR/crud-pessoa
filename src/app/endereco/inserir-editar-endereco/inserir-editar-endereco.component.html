@@ -135,6 +135,21 @@
         <div [hidden]="!estado.errors['required']">Digite o estado.</div>
       </div>
     </div>
+
+    <div class="form-group">
+      <label for="nome">Residencial?:</label>
+      <div class="form-check">
+        <input
+          class="form-control form-check-input"
+          name="residencial"
+          type="checkbox"
+          id="residencial"
+          [(ngModel)]="endereco.residencial"
+          #residencial="ngModel"
+        />
+        <label class="form-check-label" for=""> Sim </label>
+      </div>
+    </div>
     <div class="form-group">
       <button
         type="button"

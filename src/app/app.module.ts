@@ -9,6 +9,7 @@ import { EstadoModule } from './estado/estado.module';
 import { EnderecoModule } from './endereco/endereco.module';
 import { SharedModule } from './shared';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { NgSelectModule } from '@ng-select/ng-select';
 
 @NgModule({
   declarations: [AppComponent],
@@ -21,6 +22,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     EnderecoModule,
     SharedModule,
     NgbModule,
+    NgSelectModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
