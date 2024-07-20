@@ -8,6 +8,7 @@ import { CidadeModule } from './cidade/cidade.module';
 import { EstadoModule } from './estado/estado.module';
 import { EnderecoModule } from './endereco/endereco.module';
 import { SharedModule } from './shared';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [AppComponent],
@@ -19,6 +20,7 @@ import { SharedModule } from './shared';
     EstadoModule,
     EnderecoModule,
     SharedModule,
+    NgbModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
