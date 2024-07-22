@@ -7,6 +7,7 @@ import { PessoaModule } from './pessoa';
 import { CidadeModule } from './cidade/cidade.module';
 import { EstadoModule } from './estado/estado.module';
 import { EnderecoModule } from './endereco/endereco.module';
+import { AuthModule } from './auth/auth.module';
 import { SharedModule } from './shared';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { NgSelectModule } from '@ng-select/ng-select';
@@ -20,6 +21,7 @@ import { NgSelectModule } from '@ng-select/ng-select';
     CidadeModule,
     EstadoModule,
     EnderecoModule,
+    AuthModule,
     SharedModule,
     NgbModule,
     NgSelectModule,
