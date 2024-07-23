@@ -25,6 +25,15 @@
           <a
             class="nav-link"
             href="#"
+            routerLink="/usuarios"
+            *ngIf="temPermissao('ADMIN')"
+            >Usuários</a
+          >
+        </li>
+        <li class="nav-item">
+          <a
+            class="nav-link"
+            href="#"
             routerLink="/cidades"
             *ngIf="temPermissao('ADMIN')"
             >Cidades</a
@@ -75,6 +84,13 @@
               routerLink="/estados"
               *ngIf="temPermissao('ADMIN', 'FUNC')"
               >Estados</a
+            >
+            <a
+              ngbDropdownItem
+              href="#"
+              routerLink="/usuarios"
+              *ngIf="temPermissao('ADMIN')"
+              >Usuários</a
             >
           </div>
         </li>

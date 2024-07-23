@@ -12,6 +12,8 @@ import { SharedModule } from './shared';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { NgSelectModule } from '@ng-select/ng-select';
 import { HomeComponent } from './home/home.component';
+import { HttpClientModule } from '@angular/common/http';
+import { UsuarioModule } from './usuario/usuario.module';
 
 @NgModule({
   declarations: [AppComponent, HomeComponent],
@@ -26,6 +28,8 @@ import { HomeComponent } from './home/home.component';
     SharedModule,
     NgbModule,
     NgSelectModule,
+    HttpClientModule,
+    UsuarioModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
