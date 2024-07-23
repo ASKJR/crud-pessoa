@@ -9,11 +9,14 @@ import { InserirEditarEstadoComponent } from './estado/inserir-editar-estado/ins
 import { ListarEstadoComponent } from './estado/listar-estado/listar-estado.component';
 import { ListarEnderecoComponent } from './endereco/listar-endereco/listar-endereco.component';
 import { InserirEditarEnderecoComponent } from './endereco/inserir-editar-endereco/inserir-editar-endereco.component';
+import { LoginComponent } from './auth/login/login.component';
+import { authGuard } from './auth/auth.guard';
+import { HomeComponent } from './home/home.component';
 
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'pessoas/listar',
+    redirectTo: 'login',
     pathMatch: 'full',
   },
   {
@@ -23,18 +26,34 @@ const routes: Routes = [
   {
     path: 'pessoas/listar',
     component: ListarPessoaComponent,
+    canActivate: [authGuard],
+    data: {
+      role: 'ADMIN,GERENTE,FUNC',
+    },
   },
   {
     path: 'pessoas/novo',
     component: InserirPessoaComponent,
+    canActivate: [authGuard],
+    data: {
+      role: 'ADMIN,GERENTE,FUNC',
+    },
   },
   {
     path: 'pessoas/editar/:id',
     component: EditarPessoaComponent,
+    canActivate: [authGuard],
+    data: {
+      role: 'ADMIN,GERENTE,FUNC',
+    },
   },
   {
     path: 'cidades/listar',
     component: ListarCidadeComponent,
+    canActivate: [authGuard],
+    data: {
+      role: 'ADMIN',
+    },
   },
   {
     path: 'cidades',
@@ -43,14 +62,26 @@ const routes: Routes = [
   {
     path: 'cidades/novo',
     component: InserirEditarCidadeComponent,
+    canActivate: [authGuard],
+    data: {
+      role: 'ADMIN',
+    },
   },
   {
     path: 'cidades/editar/:id',
     component: InserirEditarCidadeComponent,
+    canActivate: [authGuard],
+    data: {
+      role: 'ADMIN',
+    },
   },
   {
     path: 'estados/listar',
     component: ListarEstadoComponent,
+    canActivate: [authGuard],
+    data: {
+      role: 'ADMIN,FUNC',
+    },
   },
   {
     path: 'estados',
@@ -59,15 +90,27 @@ const routes: Routes = [
   {
     path: 'estados/novo',
     component: InserirEditarEstadoComponent,
+    canActivate: [authGuard],
+    data: {
+      role: 'ADMIN,FUNC',
+    },
   },
   {
     path: 'estados/editar/:id',
     component: InserirEditarEstadoComponent,
+    canActivate: [authGuard],
+    data: {
+      role: 'ADMIN,FUNC',
+    },
   },
 
   {
     path: 'enderecos/listar',
     component: ListarEnderecoComponent,
+    canActivate: [authGuard],
+    data: {
+      role: 'ADMIN,GERENTE',
+    },
   },
   {
     path: 'enderecos',
@@ -76,10 +119,30 @@ const routes: Routes = [
   {
     path: 'enderecos/novo',
     component: InserirEditarEnderecoComponent,
+    canActivate: [authGuard],
+    data: {
+      role: 'ADMIN,GERENTE',
+    },
   },
   {
     path: 'enderecos/editar/:id',
     component: InserirEditarEnderecoComponent,
+    canActivate: [authGuard],
+    data: {
+      role: 'ADMIN,GERENTE',
+    },
+  },
+  {
+    path: 'login',
+    component: LoginComponent,
+  },
+  {
+    path: 'home',
+    component: HomeComponent,
+    canActivate: [authGuard],
+    data: {
+      role: 'ADMIN,GERENTE,FUNC',
+    },
   },
 ];
 
