@@ -14,17 +14,41 @@ export class ListarPessoaComponent implements OnInit {
     private modalService: NgbModal
   ) {}
   pessoas: Pessoa[] = [];
+  mensagem = '';
+  mensagem_detalhes = '';
   ngOnInit(): void {
     this.pessoas = this.listarTodos();
   }
   listarTodos(): Pessoa[] {
-    return this.pessoaService.listarTodos();
+    this.pessoaService.listarTodos().subscribe({
+      next: (data: Pessoa[] | null) => {
+        if (data == null) {
+          this.pessoas = [];
+        } else {
+          this.pessoas = data;
+        }
+      },
+      error: (err) => {
+        this.mensagem = 'Error buscando a lista de usuários';
+        this.mensagem_detalhes = `[${err.status}] ${err.mensagem}`;
+      },
+    });
+    return this.pessoas;
   }
   removerPessoa($event: any, pessoa: Pessoa) {
     $event.preventDefault();
+    this.mensagem = '';
+    this.mensagem_detalhes = '';
     if (confirm(`Deseja realmente remover a pessoa ${pessoa.nome}?`)) {
-      this.pessoaService.remover(pessoa.id!);
-      this.pessoas = this.pessoaService.listarTodos();
+      this.pessoaService.remover(pessoa.id!).subscribe({
+        complete: () => {
+          this.listarTodos();
+        },
+        error: (err) => {
+          this.mensagem = `Error removendo pessoa ${pessoa.id} - ${pessoa.nome}`;
+          this.mensagem_detalhes = `[${err.status}] ${err.mensagem}`;
+        },
+      });
     }
   }
 
