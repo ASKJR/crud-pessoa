@@ -14,6 +14,8 @@ export class LoginComponent {
   login: Login = new Login();
   loading: boolean = false;
   message!: string;
+  mensagem = '';
+  mensagem_detalhes = '';
   constructor(
     private loginService: LoginService,
     private router: Router,
@@ -32,14 +34,20 @@ export class LoginComponent {
   logar(): void {
     this.loading = true;
     if (this.formLogin.form.valid) {
-      this.loginService.login(this.login).subscribe((usu) => {
-        if (usu != null) {
-          this.loginService.usuarioLogado = usu;
-          this.loading = false;
-          this.router.navigate(['/home']);
-        } else {
-          this.message = 'Usuário/Senha inválidos.';
-        }
+      this.loginService.login(this.login).subscribe({
+        next: (usu) => {
+          if (usu != null) {
+            this.loginService.usuarioLogado = usu;
+            this.loading = false;
+            this.router.navigate(['/home']);
+          } else {
+            this.message = 'Usuário/Senha inválidos.';
+          }
+        },
+        error: (err) => {
+          this.mensagem = `Login inválido`;
+          this.mensagem_detalhes = `[${err.status}] ${err.mensagem}`;
+        },
       });
     }
     this.loading = false;
