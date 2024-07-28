@@ -27,6 +27,13 @@
       "login": "kato",
       "senha": "pizza2",
       "perfil": "ADMIN"
+    },
+    {
+      "id": "0799",
+      "nome": "Alberto",
+      "login": "alberto",
+      "senha": "alberto",
+      "perfil": "ADMIN"
     }
   ]
 }

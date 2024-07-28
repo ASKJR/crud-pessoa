@@ -11,6 +11,8 @@ import { UsuarioService } from '../services/usuario.service';
 })
 export class ListarUsuarioComponent implements OnInit {
   usuarios: Usuario[] = [];
+  mensagem = '';
+  mensagem_detalhes = '';
   constructor(
     private usuarioService: UsuarioService,
     private modalService: NgbModal
@@ -20,22 +22,32 @@ export class ListarUsuarioComponent implements OnInit {
   }
   listarTodos(): Usuario[] {
     this.usuarioService.listarTodos().subscribe({
-      next: (data: Usuario[]) => {
+      next: (data: Usuario[] | null) => {
         if (data == null) {
           this.usuarios = [];
         } else {
           this.usuarios = data;
         }
       },
+      error: (err) => {
+        this.mensagem = 'Error buscando a lista de usuários';
+        this.mensagem_detalhes = `[${err.status}] ${err.mensagem}`;
+      },
     });
     return this.usuarios;
   }
   remover($event: any, usuario: Usuario): void {
     $event.preventDefault();
+    this.mensagem = '';
+    this.mensagem_detalhes = '';
     if (confirm(`Deseja realmente remover o usuário ${usuario.nome}?`)) {
       this.usuarioService.remover(usuario.id!).subscribe({
         complete: () => {
           this.listarTodos();
+        },
+        error: (err) => {
+          this.mensagem = `Error removendo usuário ${usuario.id} - ${usuario.nome}`;
+          this.mensagem_detalhes = `[${err.status}] ${err.mensagem}`;
         },
       });
     }

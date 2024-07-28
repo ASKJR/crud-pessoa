@@ -1,5 +1,19 @@
 <h1 *ngIf="novoUsuario">Novo Usuário</h1>
 <h1 *ngIf="!novoUsuario">Editar Usuário</h1>
+<div
+  *ngIf="mensagem.length > 0"
+  class="alert alert-danger alert-dismissible fade show"
+  role="alert"
+>
+  <h4 class="alert-heading">{{ mensagem }}</h4>
+  <p>{{ mensagem_detalhes }}</p>
+  <button
+    type="button"
+    class="btn-close"
+    data-bs-dismiss="alert"
+    aria-label="Close"
+  ></button>
+</div>
 <div class="well">
   <form #formUsuario="ngForm">
     <div class="form-group">
@@ -9,7 +23,7 @@
         class="form-control"
         id="nome"
         name="nome"
-        [(ngModel)]="usuario.nome"
+        [(ngModel)]="usuario!.nome"
         #nome="ngModel"
         minlength="2"
         required
@@ -32,7 +46,7 @@
         class="form-control"
         id="login"
         name="login"
-        [(ngModel)]="usuario.login"
+        [(ngModel)]="usuario!.login"
         #login="ngModel"
         minlength="2"
         required
@@ -60,7 +74,7 @@
         class="form-control"
         id="senha"
         name="senha"
-        [(ngModel)]="usuario.senha"
+        [(ngModel)]="usuario!.senha"
         #senha="ngModel"
       />
     </div>
@@ -71,7 +85,7 @@
         class="form-check-input"
         id="perfil"
         name="perfil"
-        [(ngModel)]="usuario.perfil"
+        [(ngModel)]="usuario!.perfil"
         #perfil="ngModel"
         value="ADMIN"
       />
@@ -81,7 +95,7 @@
         class="form-check-input"
         id="perfil"
         name="perfil"
-        [(ngModel)]="usuario.perfil"
+        [(ngModel)]="usuario!.perfil"
         #perfil="ngModel"
         value="GERENTE"
       />
@@ -91,7 +105,7 @@
         class="form-check-input"
         id="perfil"
         name="perfil"
-        [(ngModel)]="usuario.perfil"
+        [(ngModel)]="usuario!.perfil"
         #perfil="ngModel"
         value="FUNC"
       />
@@ -102,7 +116,7 @@
       type="button"
       class="btn btn-primary"
       (click)="salvar()"
-      [disabled]="!formUsuario.form.valid"
+      [disabled]="!formUsuario.form.valid || botaoDesabilitado"
     >
       <i *ngIf="!loading" class="fa fa-save" aria hidden="true"></i>
       <span
