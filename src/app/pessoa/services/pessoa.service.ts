@@ -22,7 +22,19 @@ export class PessoaService {
         if (resp.status != 200) {
           return [];
         } else {
-          return resp.body;
+          let lista: Pessoa[] = [];
+          resp.body?.forEach((p) => {
+            let pes = new Pessoa(
+              p.id,
+              p.nome,
+              p.idade,
+              p.dataNascimento,
+              p.motorista
+            );
+            pes.dateFromRest();
+            lista.push(pes);
+          });
+          return lista;
         }
       }),
       catchError((e) => {
@@ -42,7 +54,17 @@ export class PessoaService {
           if (resp.status != 200) {
             return null;
           } else {
-            return resp.body;
+            const { id, nome, idade, dataNascimento, motorista } = resp.body!;
+            let pes: Pessoa = new Pessoa(
+              id,
+              nome,
+              idade,
+              dataNascimento,
+              motorista
+            );
+            pes.dateFromRest();
+
+            return pes;
           }
         }),
         catchError((e) => {
@@ -55,6 +77,7 @@ export class PessoaService {
       );
   }
   inserir(pessoa: Pessoa): Observable<Pessoa | null> {
+    pessoa.dateToRest();
     return this.httpClient
       .post<Pessoa>(this.BASE_URL, JSON.stringify(pessoa), this.httpOptions)
       .pipe(
@@ -62,7 +85,17 @@ export class PessoaService {
           if (resp.status != 201) {
             return null;
           } else {
-            return resp.body;
+            const { id, nome, idade, dataNascimento, motorista } = resp.body!;
+            let pes: Pessoa = new Pessoa(
+              id,
+              nome,
+              idade,
+              dataNascimento,
+              motorista
+            );
+            pes.dateFromRest();
+
+            return pes;
           }
         }),
         catchError((e) => {
@@ -78,7 +111,17 @@ export class PessoaService {
           if (resp.status != 200) {
             return null;
           } else {
-            return resp.body;
+            const { id, nome, idade, dataNascimento, motorista } = resp.body!;
+            let pes: Pessoa = new Pessoa(
+              id,
+              nome,
+              idade,
+              dataNascimento,
+              motorista
+            );
+            pes.dateFromRest();
+
+            return pes;
           }
         }),
         catchError((e) => {
@@ -87,6 +130,7 @@ export class PessoaService {
       );
   }
   alterar(pessoa: Pessoa): Observable<Pessoa | null> {
+    pessoa.dateToRest();
     return this.httpClient
       .put<Pessoa>(
         this.BASE_URL + '/' + pessoa.id,
@@ -98,7 +142,17 @@ export class PessoaService {
           if (resp.status != 200) {
             return null;
           } else {
-            return resp.body;
+            const { id, nome, idade, dataNascimento, motorista } = resp.body!;
+            let pes: Pessoa = new Pessoa(
+              id,
+              nome,
+              idade,
+              dataNascimento,
+              motorista
+            );
+            pes.dateFromRest();
+
+            return pes;
           }
         }),
         catchError((e) => {
